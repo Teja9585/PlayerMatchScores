@@ -158,12 +158,9 @@ app.get("/matches/:matchId/players", async (req,res) =>{
         WHERE 
         match_id = ${matchId};`;
    const playerMatches = await database.all(playerMatchesQuery)
-    res.send(
-        playerMatches.map((eachMatch)=>
-       convertDbMatchDetailsObjToResponseObj(eachMatch)
-    )
+    res.send( playerMatches )
 
-    );
+
 });
 
 app.get("/players/:playerId/playerScores",async(req,res)=> {
